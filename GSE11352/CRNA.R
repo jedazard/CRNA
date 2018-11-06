@@ -277,12 +277,6 @@ plot(Tx48_majority_vote_graph, edge.arrow.size=.2, edge.curved=0,
      
      vertex.label.cex=.5,layout = layout_nicely(Tx48_majority_vote_graph),vertex.size = 9)
 
-#Output for other software
-# Tx48_majority_vote_edgeList <- igraph::as_data_frame(Tx48_majority_vote_graph)
-# write.csv(Tx48_majority_vote_edgeList,"../Draft/materials/V23_48Hrs_majority_vote_edgeList.csv",quote = F)
-# Tx48_majority_vote_nodeList <- Tx48_majority_vote
-# colnames(Tx48_majority_vote_nodeList) <- c("node_sign")
-# write.csv(Tx48_majority_vote_nodeList,"../Draft/materials/V23_48Hrs_majority_vote_nodeList.csv",quote = F)
 
 regulated_genes <- omnipath[which(omnipath$source_name %in% rownames(Tx48_majority_vote_nodeList)),]
 regulated_DEGs <- regulated_genes[which(regulated_genes$target_name %in% miarray$SYMBOL),]
@@ -309,8 +303,3 @@ plot(majority_vote_graph, edge.arrow.size=.2, edge.curved=0,
      vertex.label=V(majority_vote_graph)$name, vertex.label.color="black",
      vertex.label.cex=.5,layout = layout_nicely(majority_vote_graph),vertex.size = 9) 
 
-write.csv(igraph::as_data_frame(majority_Vote_graph),"../Draft/materials/RWR_FC2_MST_V21_majority_Vote_edgeList.csv",quote = F)
-majority_Vote_nodeList <- cbind(rownames(majority_vote),(as.data.frame(sign(majority_vote$Tx - majority_vote$Ctrl),row.names = rownames(majority_vote))))
-majority_Vote_nodeList <- majority_Vote_nodeList[majority_Vote_nodeList$`sign(majority_vote$Tx - majority_vote$Ctrl)` != 0,]
-colnames(majority_Vote_nodeList) <- c("id","node_sign")
-write.csv(majority_Vote_nodeList,"../Draft/materials/RWR_FC2_MST_V21_majority_Vote_nodeList.csv",quote = F,row.names = F)
