@@ -84,3 +84,26 @@ omnipath <- omnipath[-(which(omnipath$source_name == "" | omnipath$target_name =
 
 rm(STRING,omni,ENSP2name,ensembl)
 
+omniNet_messy <- graph_from_data_frame(d = omnipath,directed = T)
+omniNet_messy <- igraph::simplify(graph = omniNet_messy,remove.multiple = T,
+                                  remove.loops = T,
+                                  edge.attr.comb = list(weight = function(x) mean(x),
+                                                        sign = function(x) sign(sum(x)),"ignore"))
+# delete isolated edges
+All_edges <- E(omniNet_messy) 
+k = 0
+isolated_edges <- c()
+for (i in 1:length(All_edges)) {
+  edgeHead <- head_of(graph = omniNet_messy,es = All_edges[i])
+  edgeTail <- tail_of(graph = omniNet_messy,es = All_edges[i])
+  if (unname(degree(v = edgeHead, graph = omniNet_messy, mode = "all")) == 1 & unname(degree(v = edgeTail,graph = omniNet_messy,mode = "all")) == 1) {
+    isolated_edges <- c(isolated_edges,i)
+  }
+}
+# delete isolated edges
+omniNet <- delete.edges(omniNet_messy,All_edges[isolated_edges])
+# get all node name
+nodeNames <- V(omniNet)$name
+
+### Clean up
+rm(omniNet_messy,edgeHead,edgeTail,All_edges)
