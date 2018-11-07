@@ -30,7 +30,7 @@ omniNet <- CreateCCG("data_for_markdown/CausalR_omnipath.sif")
 
 GSE60880_miarray <- ReadExperimentalData("data_for_markdown/GSE60880_causal_exprs.txt",network = omniNet)
 
-GSE11352_miarray <- ReadExperimentalData("data_for_markdown/GSE1352_causal_exprs.txt",network = omniNet)
+GSE11352_miarray <- ReadExperimentalData("data_for_markdown/GSE11352_causal_exprs.txt",network = omniNet)
 
 
 runSCANR(network =omniNet,experimentalData =GSE11352_miarray, writeNetworkFiles = "all",outputDir = "CausalR/GSE11352/" )
