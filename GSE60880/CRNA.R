@@ -200,7 +200,6 @@ ipa_bfs <- function(r1,omniNet,miarray,IPAresultPZ){
 #########################################################################################
 omnipath <- read.csv("data_for_markdown/omnipath_final.csv",row.names = 1)
 DEGList <- read.csv("data_for_markdown/GSE60880_DEGList.csv",row.names = 1)
-GSE60880_exprs_for_PARADIGM <- read.csv("data_for_markdown/GSE60880_exprs_for_PARADIGM.csv",row.names = 1)
 omniNet<- graph_from_data_frame(d = omnipath,directed = T)
 
 #########################################################################################
