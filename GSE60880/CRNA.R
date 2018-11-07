@@ -199,15 +199,11 @@ write.table(RWR_FC2_DAG_permuted_for_JTREE_mRNA, paste0("output_for_significant/
 
 
 
-
-
-RWR_GSE60880 <- read.table(paste0("output_for_significant/RWR_for_JTREE/JTREE_output/GSE60880_DAG_GSE60880.txt"),comment.char = ">")
-RWR_permuted <- read.table(paste0("output_for_significant/RWR_for_JTREE/JTREE_output/GSE60880_DAG_permuted.txt"),comment.char = ">")
-heatmap_candidates <- c()
-
 #########################################################################################
 # Load JTREE results
 #########################################################################################
+RWR_GSE60880 <- read.table(paste0("output_for_significant/RWR_for_JTREE/JTREE_output/GSE60880_DAG_GSE60880.txt"),comment.char = ">")
+RWR_permuted <- read.table(paste0("output_for_significant/RWR_for_JTREE/JTREE_output/GSE60880_DAG_permuted.txt"),comment.char = ">")
 
 permuted_activity_score <- as.data.frame(matrix(NA,nrow = nrow(RWR_permuted)/(ncol(GSE60880_DAG_permuted_exprs_for_JTREE)-1),ncol = (ncol(GSE60880_DAG_permuted_exprs_for_JTREE)-1)))
 rownames(permuted_activity_score) <- RWR_permuted$V1[1:(nrow(RWR_permuted)/(ncol(GSE60880_DAG_permuted_exprs_for_JTREE)-1))]
