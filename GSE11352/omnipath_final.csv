@@ -1,4 +1,4 @@
-,from,to,sign,weight
+,source_name,target_name,sign,weight
 1,A2M,KLK3,-1,0.71
 2,A2M,LRP1,1,0.863
 3,AAK1,AP2M1,1,0.974
