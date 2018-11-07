@@ -152,7 +152,6 @@ GSE60880_EGFR_GSE60880_for_JTREE_genome[,] <- NA
 
 # write.table(rbind(id = colnames(GSE60880_EGFR_GSE60880_for_JTREE_genome),GSE60880_EGFR_GSE60880_for_JTREE_genome),paste0("output_for_significant/RWR_for_JTREE/JTREE_input/GSE60880_EGFR_GSE60880_genome.tab"),sep = "\t",quote = FALSE,col.names = FALSE)
 # write.table(rbind(id = colnames(GSE60880_EGFR_GSE60880_for_JTREE_mRNA),GSE60880_EGFR_GSE60880_for_JTREE_mRNA), paste0("output_for_significant/RWR_for_JTREE/JTREE_input/GSE60880_EGFR_GSE60880_mRNA.tab"),sep = "\t",quote = FALSE,col.names = FALSE)
-# write.table(paste0("/usr/bin/time /home/zaza/sbenz-JTREE-c5fc0f9/JTREE -c  /home/zaza/sbenz-JTREE-c5fc0f9/em_simple.cfg -p GSE60880_EGFR_pathway.tab -b GSE60880_EGFR_GSE60880 > ../JTREE_output/GSE60880_EGFR_GSE60880.txt\n\n"),paste0("output_for_significant/RWR_for_JTREE/JTREE_input/GSE60880_EGFR_JTREE.sh"),quote = F,append = T,row.names = F,col.names = F)
 
 # Permuting Sample
 GSE60880_EGFR_permuted_exprs_for_JTREE <- as.data.frame(matrix(NA,ncol = 0,nrow = nrow(GSE60880_EGFR_GSE60880_exprs_for_JTREE)))
@@ -172,7 +171,6 @@ GSE60880_EGFR_permuted_for_JTREE_genome <- GSE60880_EGFR_permuted_for_JTREE_mRNA
 GSE60880_EGFR_permuted_for_JTREE_genome[-1,] <- NA
 # write.table(GSE60880_EGFR_permuted_for_JTREE_genome,paste0("output_for_significant/RWR_for_JTREE/JTREE_input/GSE60880_EGFR_permuted_genome.tab"),sep = "\t",quote = FALSE,col.names = FALSE)
 # write.table(GSE60880_EGFR_permuted_for_JTREE_mRNA, paste0("output_for_significant/RWR_for_JTREE/JTREE_input/GSE60880_EGFR_permuted_mRNA.tab"),sep = "\t",quote = FALSE,col.names = FALSE)
-# write.table(paste0("/usr/bin/time /home/zaza/sbenz-JTREE-c5fc0f9/JTREE -c  /home/zaza/sbenz-JTREE-c5fc0f9/em_simple.cfg -p GSE60880_EGFR_pathway.tab -b GSE60880_EGFR_permuted > ../JTREE_output/GSE60880_EGFR_permuted.txt\n\n"),paste0("output_for_significant/RWR_for_JTREE/JTREE_input/GSE60880_EGFR_JTREE.sh"),quote = F,append = T,row.names = F,col.names = F)
 
 
 # 
