@@ -152,8 +152,8 @@ RWR_FC2_DAG_edge_part <- RWR_FC2_DAG_edgeList[,c(1,2,3)]
 # Edge Part
 RWR_FC2_DAG_edge_part[which(RWR_FC2_DAG_edge_part$sign == 1),3] <- "-t>"
 RWR_FC2_DAG_edge_part[which(RWR_FC2_DAG_edge_part$sign == -1),3] <- "-t|"
-write.table(RWR_FC2_DAG_node_part,paste0("output_for_significant/RWR_for_JTREE/JTREE_input/RWR_FC2_DAG_pathway.tab"),row.names = F,col.names = F,quote = F,sep = "\t")
-write.table(RWR_FC2_DAG_edge_part,paste0("output_for_significant/RWR_for_JTREE/JTREE_input/RWR_FC2_DAG_pathway.tab"),row.names = F,col.names = F,quote = F,sep = "\t",append = T)
+#write.table(RWR_FC2_DAG_node_part,paste0("output_for_significant/RWR_for_JTREE/JTREE_input/RWR_FC2_DAG_pathway.tab"),row.names = F,col.names = F,quote = F,sep = "\t")
+#write.table(RWR_FC2_DAG_edge_part,paste0("output_for_significant/RWR_for_JTREE/JTREE_input/RWR_FC2_DAG_pathway.tab"),row.names = F,col.names = F,quote = F,sep = "\t",append = T)
 
 ### expression part
 RWR_FC2_DAG_GSE11352_exprs_for_JTREE <- GSE11352_exprs_for_JTREE[as.character(RWR_FC2_DAG_node_part$id),]
@@ -161,8 +161,8 @@ rownames(RWR_FC2_DAG_GSE11352_exprs_for_JTREE) <- as.character(RWR_FC2_DAG_node_
 RWR_FC2_DAG_GSE11352_for_JTREE_mRNA <- as.data.frame(t(RWR_FC2_DAG_GSE11352_exprs_for_JTREE))
 RWR_FC2_DAG_GSE11352_for_JTREE_genome <- RWR_FC2_DAG_GSE11352_for_JTREE_mRNA
 RWR_FC2_DAG_GSE11352_for_JTREE_genome <- NA
-write.table(rbind(id = colnames(RWR_FC2_DAG_GSE11352_for_JTREE_genome),RWR_FC2_DAG_GSE11352_for_JTREE_genome),"output_for_significant/RWR_for_JTREE/JTREE_input/RWR_FC2_DAG_GSE11352_genome.tab",sep = "\t",quote = FALSE,col.names = FALSE)
-write.table(rbind(id = colnames(RWR_FC2_DAG_GSE11352_for_JTREE_mRNA),RWR_FC2_DAG_GSE11352_for_JTREE_mRNA),"output_for_significant/RWR_for_JTREE/JTREE_input/RWR_FC2_DAG_GSE11352_mRNA.tab",sep = "\t",quote = FALSE,col.names = FALSE)
+#write.table(rbind(id = colnames(RWR_FC2_DAG_GSE11352_for_JTREE_genome),RWR_FC2_DAG_GSE11352_for_JTREE_genome),"output_for_significant/RWR_for_JTREE/JTREE_input/RWR_FC2_DAG_GSE11352_genome.tab",sep = "\t",quote = FALSE,col.names = FALSE)
+#write.table(rbind(id = colnames(RWR_FC2_DAG_GSE11352_for_JTREE_mRNA),RWR_FC2_DAG_GSE11352_for_JTREE_mRNA),"output_for_significant/RWR_for_JTREE/JTREE_input/RWR_FC2_DAG_GSE11352_mRNA.tab",sep = "\t",quote = FALSE,col.names = FALSE)
 
 # Permutating samples
 RWR_FC2_DAG_permuted_exprs_for_JTREE <- as.data.frame(matrix(NA,ncol = 0,nrow = nrow(RWR_FC2_DAG_GSE11352_exprs_for_JTREE)))
@@ -180,8 +180,8 @@ colnames(RWR_FC2_DAG_permuted_exprs_for_JTREE) <- c("id",1:(ncol(GSE11352_exprs_
 RWR_FC2_DAG_permuted_for_JTREE_mRNA <- as.data.frame(t(RWR_FC2_DAG_permuted_exprs_for_JTREE))
 RWR_FC2_DAG_permuted_for_JTREE_genome <- RWR_FC2_DAG_permuted_for_JTREE_mRNA
 RWR_FC2_DAG_permuted_for_JTREE_genome[-1,] <- NA
-write.table(RWR_FC2_DAG_permuted_for_JTREE_genome,paste0("output_for_significant/RWR_for_JTREE/JTREE_input/RWR_FC2_DAG_permuted_genome.tab"),sep = "\t",quote = FALSE,col.names = FALSE)
-write.table(RWR_FC2_DAG_permuted_for_JTREE_mRNA, paste0("output_for_significant/RWR_for_JTREE/JTREE_input/RWR_FC2_DAG_permuted_mRNA.tab"),sep = "\t",quote = FALSE,col.names = FALSE)
+#write.table(RWR_FC2_DAG_permuted_for_JTREE_genome,paste0("output_for_significant/RWR_for_JTREE/JTREE_input/RWR_FC2_DAG_permuted_genome.tab"),sep = "\t",quote = FALSE,col.names = FALSE)
+#write.table(RWR_FC2_DAG_permuted_for_JTREE_mRNA, paste0("output_for_significant/RWR_for_JTREE/JTREE_input/RWR_FC2_DAG_permuted_mRNA.tab"),sep = "\t",quote = FALSE,col.names = FALSE)
 
 
 
