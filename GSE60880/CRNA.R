@@ -140,6 +140,7 @@ if (!is.dag(DAG_test)) {
   DAG_after <- graph_from_adjacency_matrix(acyclic_adjmax)
 }  
 is.dag(DAG_after)
+RWR_FC2_DAG_edgeList <- igraph::as_data_frame(DAG_after)
 DAG_after_edgeList <- merge(x = igraph::as_data_frame(DAG_after),y = RWR_FC2_DAG_edgeList, by = c("from","to"))
 RWR_FC2_DAG_graph <- igraph::simplify(graph = graph_from_data_frame(unique(DAG_after_edgeList),directed = T),remove.multiple = T,
                                       remove.loops = T,edge.attr.comb = "mean")
