@@ -146,7 +146,7 @@ RWR_FC2_DAG_edgeList <- igraph::as_data_frame(DAG_after)
 DAG_after_edgeList <- merge(x = igraph::as_data_frame(DAG_after),y = RWR_FC2_DFS_edgeList, by = c("from","to"))
 RWR_FC2_DAG_graph <- igraph::simplify(graph = graph_from_data_frame(unique(DAG_after_edgeList),directed = T),remove.multiple = T,
                                       remove.loops = T,edge.attr.comb = "mean")
-# RWR_FC2_DAG_edgeList <- igraph::as_data_frame(RWR_FC2_DAG_graph)
+RWR_FC2_DAG_edgeList <- igraph::as_data_frame(RWR_FC2_DAG_graph)
 # write.csv(RWR_FC2_DAG_edgeList,"../Draft/materials/V23_DAG_edgeList.csv",quote = F)
 # RWR_FC2_DAG_nodeList <- as.data.frame(as.character(V(RWR_FC2_DAG_graph)$name))
 # RWR_FC2_DAG_nodeList$DEGs <- 0
