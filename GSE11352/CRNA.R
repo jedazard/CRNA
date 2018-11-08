@@ -71,7 +71,7 @@ RWR_dfs <- function(r1,graph,DEG){
 #########################################################################################
 # scaled_GSE11352_exprs <- read.table("data_for_markdown/scaled_exprs_limma.tab",sep = "\t")
 omnipath <- read.csv("data_for_markdown/omnipath_final.csv",row.names = 1)
-GSE11352_DEGList <- read.csv("data_for_markdown/GSE11352_GSE11352_DEGList.csv",row.names = 1)
+DEGList <- read.csv("data_for_markdown/GSE11352_DEGList.csv",row.names = 1)
 GSE11352_exprs_for_JTREE <- read.csv("data_for_markdown/GSE11352_scaled_exprs.csv",row.names = 1)[,-1]
 omniNet <- graph_from_data_frame(d = omnipath,directed = T)
 miarray <- as.data.frame(DEGList[which(abs(DEGList$logFC) >= log2(2)),])
@@ -96,7 +96,7 @@ FC2_undirected_RWR0.75_nodelist[,2] <- rowMeans(RWR_probability_data)
 FC2_undirected_RWR0.75_selected_node <- rownames(FC2_undirected_RWR0.75_nodelist[FC2_undirected_RWR0.75_nodelist$V2 >quantile(FC2_undirected_RWR0.75_nodelist$V2,0.975),])
 FC2_undirected_RWR0.75_DFS_candidates <-  FC2_undirected_RWR0.75_selected_node[which(!FC2_undirected_RWR0.75_selected_node %in% miarray$SYMBOL)]
 
-ggplot(data = FC2_undirected_RWR0.75_nodelist, aes(x =V8)) +
+ggplot(data = FC2_undirected_RWR0.75_nodelist, aes(x =V2)) +
   geom_histogram(color = "white", bins = 20,fill = "orangered") +
   labs(title = "Distribution of RWR probability",
        x = "probability",y = "Frequency")
@@ -113,7 +113,7 @@ for (i in 1:length(FC2_undirected_RWR0.75_DFS_candidates)) {
   r1_RWR0.75_DFS_graph <- RWR_dfs(r1,significant_genes_graph,miarray)
   if(length(E(r1_RWR0.75_DFS_graph)) > 0){
     FC2_undirected_RWR0.75_JTREE_edgeList <- unique(rbind(FC2_undirected_RWR0.75_JTREE_edgeList,
-                                                    igraph::as_data_frame(r1_RWR0.75_DFS_graph)))
+                                                          igraph::as_data_frame(r1_RWR0.75_DFS_graph)))
     FC2_undirected_RWR0.75_JTREE_candidates <- c(FC2_undirected_RWR0.75_JTREE_candidates,r1)
   }
 }
@@ -135,7 +135,7 @@ RWR_FC2_DAG_edgeList <- igraph::as_data_frame(DAG_after)
 DAG_after_edgeList <- merge(x = igraph::as_data_frame(DAG_after),y = RWR_FC2_DFS_edgeList, by = c("from","to"))
 RWR_FC2_DAG_graph <- igraph::simplify(graph = graph_from_data_frame(unique(DAG_after_edgeList),directed = T),remove.multiple = T,
                                       remove.loops = T,edge.attr.comb = "mean")
-# RWR_FC2_DAG_edgeList <- igraph::as_data_frame(RWR_FC2_DAG_graph)
+RWR_FC2_DAG_edgeList <- igraph::as_data_frame(RWR_FC2_DAG_graph)
 # write.csv(RWR_FC2_DAG_edgeList,"../Draft/materials/V23_DAG_edgeList.csv",quote = F)
 # RWR_FC2_DAG_nodeList <- as.data.frame(as.character(V(RWR_FC2_DAG_graph)$name))
 # RWR_FC2_DAG_nodeList$DEGs <- 0
@@ -173,7 +173,7 @@ for (i in 1:ncol(RWR_FC2_DAG_GSE11352_exprs_for_JTREE)) {
   for (j in 1:1000) {
     RWR_FC2_DAG_permuted_exprs_for_JTREE <- cbind(RWR_FC2_DAG_permuted_exprs_for_JTREE,
                                                   RWR_FC2_DAG_GSE11352_exprs_for_JTREE[sample(1:nrow(RWR_FC2_DAG_GSE11352_exprs_for_JTREE), 
-                                                                                                          size = nrow(RWR_FC2_DAG_GSE11352_exprs_for_JTREE), replace = T),i])
+                                                                                              size = nrow(RWR_FC2_DAG_GSE11352_exprs_for_JTREE), replace = T),i])
   }    
 }
 RWR_FC2_DAG_permuted_exprs_for_JTREE <- cbind(id = rownames(RWR_FC2_DAG_GSE11352_exprs_for_JTREE),RWR_FC2_DAG_permuted_exprs_for_JTREE)
@@ -304,4 +304,3 @@ plot(majority_vote_graph, edge.arrow.size=.2, edge.curved=0,
      vertex.color="orange", vertex.frame.color="#555555",
      vertex.label=V(majority_vote_graph)$name, vertex.label.color="black",
      vertex.label.cex=.5,layout = layout_nicely(majority_vote_graph),vertex.size = 9) 
-
