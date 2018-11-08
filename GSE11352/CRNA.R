@@ -162,7 +162,7 @@ RWR_FC2_DAG_GSE11352_exprs_for_JTREE <- GSE11352_exprs_for_JTREE[as.character(RW
 rownames(RWR_FC2_DAG_GSE11352_exprs_for_JTREE) <- as.character(RWR_FC2_DAG_node_part$id)
 RWR_FC2_DAG_GSE11352_for_JTREE_mRNA <- as.data.frame(t(RWR_FC2_DAG_GSE11352_exprs_for_JTREE))
 RWR_FC2_DAG_GSE11352_for_JTREE_genome <- RWR_FC2_DAG_GSE11352_for_JTREE_mRNA
-RWR_FC2_DAG_GSE11352_for_JTREE_genome <- NA
+RWR_FC2_DAG_GSE11352_for_JTREE_genome[,] <- NA
 #write.table(rbind(id = colnames(RWR_FC2_DAG_GSE11352_for_JTREE_genome),RWR_FC2_DAG_GSE11352_for_JTREE_genome),"output_for_significant/RWR_for_JTREE/JTREE_input/RWR_FC2_DAG_GSE11352_genome.tab",sep = "\t",quote = FALSE,col.names = FALSE)
 #write.table(rbind(id = colnames(RWR_FC2_DAG_GSE11352_for_JTREE_mRNA),RWR_FC2_DAG_GSE11352_for_JTREE_mRNA),"output_for_significant/RWR_for_JTREE/JTREE_input/RWR_FC2_DAG_GSE11352_mRNA.tab",sep = "\t",quote = FALSE,col.names = FALSE)
 
