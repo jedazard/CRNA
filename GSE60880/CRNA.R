@@ -113,6 +113,7 @@ ggplot(data = FC2_undirected_RWR0.75_nodelist, aes(x =V8)) +
 
 significant_genes_graph <- igraph::simplify(graph = induced.subgraph(omniNet,FC2_undirected_RWR0.75_selected_node),remove.multiple = T,
                                             remove.loops = T,edge.attr.comb = "mean")
+
 print(paste("Here are", length(FC2_undirected_RWR0.75_selected_node), "significant genes in undirected RWR with 0.75 restart probablility.", length(which(FC2_undirected_RWR0.75_selected_node %in% rownames(miarray))),"of them are DEGs"))
 
 #########################  DFS    ################################################################
@@ -130,6 +131,7 @@ for (i in 1:length(FC2_undirected_RWR0.75_DFS_candidates)) {
 
 RWR_FC2_DFS_graph <- igraph::simplify(graph = graph_from_data_frame(unique(FC2_undirected_RWR0.75_JTREE_edgeList),directed = T),remove.multiple = T,
                                       remove.loops = T,edge.attr.comb = "mean")
+RWR_FC2_DFS_edgeList <- igraph::as_data_frame(RWR_FC2_DFS_graph)
 
 ######################### then get DAG    ################################################################
 DAG_test <- RWR_FC2_DFS_graph
@@ -141,7 +143,7 @@ if (!is.dag(DAG_test)) {
 }  
 is.dag(DAG_after)
 RWR_FC2_DAG_edgeList <- igraph::as_data_frame(DAG_after)
-DAG_after_edgeList <- merge(x = igraph::as_data_frame(DAG_after),y = RWR_FC2_DAG_edgeList, by = c("from","to"))
+DAG_after_edgeList <- merge(x = igraph::as_data_frame(DAG_after),y = RWR_FC2_DFS_edgeList, by = c("from","to"))
 RWR_FC2_DAG_graph <- igraph::simplify(graph = graph_from_data_frame(unique(DAG_after_edgeList),directed = T),remove.multiple = T,
                                       remove.loops = T,edge.attr.comb = "mean")
 # RWR_FC2_DAG_edgeList <- igraph::as_data_frame(RWR_FC2_DAG_graph)
