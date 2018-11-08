@@ -85,6 +85,7 @@ omnipath <- read.csv("data_for_markdown/omnipath_final.csv",row.names = 1)
 DEGList <- read.csv("data_for_markdown/GSE11352_DEGList.csv",row.names = 1)
 GSE11352_exprs_for_JTREE <- read.csv("data_for_markdown/GSE11352_scaled_exprs.csv",row.names = 1)
 omniNet <- graph_from_data_frame(d = omnipath,directed = T)
+miarray <- as.data.frame(DEGList[which(abs(DEGList$logFC) >= 2),])
 
 #########################################################################################
 # RWR
