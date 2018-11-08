@@ -133,7 +133,7 @@ RWR_FC2_DFS_graph <- igraph::simplify(graph = graph_from_data_frame(unique(FC2_u
 
 ######################### then get DAG    ################################################################
 DAG_test <- RWR_FC2_DFS_graph
-if (is.dag(DAG_test)) {
+if (!is.dag(DAG_test)) {
   acyclic_adjmax <- adj.remove.cycles(adjmat = as.matrix(as_adjacency_matrix(DAG_test,names = F)) ,maxlength = 10)$adjmat.acyclic
   rownames(acyclic_adjmax) <- V(DAG_test)$name
   colnames(acyclic_adjmax) <- V(DAG_test)$name
