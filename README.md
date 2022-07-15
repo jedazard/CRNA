@@ -71,7 +71,7 @@ CRNA (>= 1.0.0) requires R-3.5.0 (2018-04-23). It was built and tested under R v
 Installation has been tested on Windows, Linux, OSX and Solaris platforms. 
 
 See Travis CI build result:
-[![Build Status](https://travis-ci.org/jedazard/CRNA.png?branch=master)](https://travis-ci.org/jedazard/CRNA)
+[![Build Status](https://app.app.travis-ci.com/jedazard/CRNA.png?branch=master)](https://app.app.travis-ci.com/jedazard/CRNA)
 
 See CRAN checks:
 [![CRAN_Status_Badge](https://www.r-pkg.org/badges/version/CRNA)](https://cran.r-project.org/web/checks/check_results_CRNA.html).
