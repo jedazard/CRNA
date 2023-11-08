@@ -24,7 +24,7 @@ permissions:
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: [ubuntu-latest, macos-latest, windows-latest] 
     strategy:
       matrix:
         r-version: ['4.3.1']
@@ -37,8 +37,8 @@ jobs:
           r-version: ${{ matrix.r-version }}
       - name: User credentials
         run: |
-            git config --global user.email "furkan6olm@gmail.com"
-            git config --global user.name "Furkan9015"
+            git config --global user.email "jedazard@gmail.com"
+            git config --global user.name "jedazard"
       - name: install libcurl-devel on linux
         if: runner.os == 'Linux'
         run: sudo apt-get install -y libcurl4-openssl-dev
