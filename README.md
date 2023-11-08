@@ -1,5 +1,5 @@
 # CRNA
-[![R](https://github.com/bebeklab/CRNA/actions/workflows/r.yml/badge.svg)](https://github.com/bebeklab/CRNA/actions/workflows/r.yml)
+[![R](https://github.com/jedazard/CRNA/actions/workflows/r.yml/badge.svg)](https://github.com/jedazard/CRNA/actions/workflows/r.yml)
 
 
 ==================
